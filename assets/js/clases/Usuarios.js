@@ -1,5 +1,4 @@
-// Clase Usuario que modela la entidad usuario
-class Usuario {
+ class Usuario {
   constructor(nombre, apellido, edad) {
     this.nombre = nombre;
     this.apellido = apellido;
@@ -10,7 +9,7 @@ class Usuario {
     this.juegosComprados = [];
   }
 
-  set_id(nuevo_id) {
+  setId(nuevo_id) {
     this.id = nuevo_id;
   }
 
@@ -47,11 +46,19 @@ class Usuario {
     this.juegosComprados.push(juego);
   }
 
-  debitar(monto) {
-    this.dinero = this.dinero - monto;
+   debitar(monto) {
+    if (monto > 0 && this.dinero >= monto) {
+      this.dinero -= monto;
+      return true;
+    }
+    return false;
+  }
+
+  getId() {
+    return this.id;
   }
 
   tieneJuego(juego) {
-    return this.juegosComprados.find(j => j.getId() === juego.getId());
+    return this.juegosComprados.find((j) => j.getId() === juego.getId());
   }
 }

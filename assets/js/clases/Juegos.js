@@ -1,5 +1,4 @@
-// Clase Juego que modela la entidad juego
-
+ 
 class Juego {
   constructor(nombre, descripcion, precio, genero, imagen) {
     this.id = -1;
@@ -26,7 +25,7 @@ class Juego {
   getId(){
     return this.id
   }
-  set_id(nuevo_id) {
+   setId(nuevo_id) {
     this.id = nuevo_id;
   }
   getGenero() {

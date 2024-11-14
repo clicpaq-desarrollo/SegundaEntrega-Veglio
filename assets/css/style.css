@@ -98,10 +98,25 @@ body {
 }
  
 .bg-home { 
-  background:url("../images/tiendade-conveniencia-8-bits-de-japon-4wk0er43wg1dth44.webp");
-  background-size: cover;
+  background:url("../images/tiendade-conveniencia-8-bits-de-japon-4wk0er43wg1dth44.webp") !important; 
+  background-size: cover!important;
 }
 
 .w-15{
   width: 15%;
 }
+
+.modal-header {
+  background: #536493;
+  color: white;
+}
+
+.modal-content {
+  font-family: monospace;
+  border: 2px solid #536493;
+}
+
+.modal-body {
+  background: #FFF1DB;
+}
+
