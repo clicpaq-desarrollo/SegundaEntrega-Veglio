@@ -1,27 +1,51 @@
 # Salón de Juegos Retro - Es Tim
 
-Bienvenido al proyecto **Es Tim**, una tienda de juegos retro donde los usuarios pueden registrarse, iniciar sesión, ver una selección de juegos, y realizar compras de juegos clásicos. Este programa está diseñado en HTML, CSS y JavaScript, y utiliza Bootstrap para los estilos. 
+Bienvenido al proyecto **Es Tim**, una tienda de juegos retro en línea donde los usuarios pueden registrarse, iniciar sesión, explorar una selección de juegos clásicos y realizar compras. Este programa está diseñado en **HTML**, **CSS**, y **JavaScript** y utiliza **Bootstrap** para el estilo y diseño responsive.
 
 ## Características Principales
 
-- **Registro e Inicio de Sesión**: Los usuarios pueden registrarse con nombre de usuario y contraseña, luego iniciar sesión para acceder a más funcionalidades.
-- **Selección de Juegos Retro**: Incluye juegos clásicos como "Piedra, Papel, Tijera", "Adivina el número" y "Matemáticas".
-- **Interfaz Interactiva**: Los usuarios pueden ver detalles de cada juego y simular compras en la plataforma.
-- **Gestión de Saldo**: Cada usuario tiene un saldo en la plataforma para realizar compras de juegos.
+- **Registro e Inicio de Sesión**: Los usuarios pueden crear una cuenta ingresando sus datos y luego iniciar sesión para acceder a funcionalidades exclusivas, como el carrito de compras y el perfil personal.
+- **Selección de Juegos Retro**: Incluye juegos clásicos como "Piedra, Papel, Tijera", "Adivina el número" y "Matemáticas", entre otros.
+- **Interfaz Interactiva**: Los usuarios pueden ver detalles de cada juego en tarjetas interactivas y añadir juegos a su carrito.
+- **Gestión de Saldo**: Cada usuario cuenta con un saldo que puede ser utilizado para realizar compras de juegos. 
+- **Carrito de Compras**: Los usuarios pueden agregar juegos al carrito, ver el total y confirmar su compra si cuentan con saldo suficiente.
+- **Perfil de Usuario**: Se puede acceder a un perfil donde el usuario puede actualizar su información y saldo.
+
+## Mejoras y Funcionalidades Futuras
+
+- **Historial de Compras**: Se añadirá un historial de compras para que los usuarios puedan ver sus transacciones anteriores y detalles de las compras realizadas.
+- **Restricción de Compra de Juegos Duplicados**: Se implementará una verificación para que los usuarios no puedan comprar el mismo juego más de una vez.
+- **Sistema de Puntaje**: Los usuarios podrán acumular puntos al realizar compras, los cuales podrán canjear en el futuro por beneficios adicionales.
+- **Juegos Gráficos Mejorados**: Los juegos contarán con una interfaz gráfica dentro de su propia página, mejorando la experiencia de juego.
+- **Estadísticas de Juego**: Cada juego permitirá a los usuarios ver y comparar sus puntajes o tiempos de juego, añadiendo un aspecto de competencia.
 
 ## Estructura de Archivos
 
-- **index.html**: Página principal de la tienda con el diseño y los enlaces a los scripts y estilos.
-- **_parametors.js**: Define los usuarios y juegos predeterminados disponibles en el sistema.
-- **script.js**: Contiene la lógica principal de navegación, autenticación y la funcionalidad del programa, incluyendo el manejo de saldo y compras.
-- **Juegos.js**: Modelo para los juegos, que gestiona atributos como nombre, precio y descripción.
-- **Login.js**: Modelo para el manejo de datos de inicio de sesión de los usuarios.
-- **Usuarios.js**: Modelo de usuario que incluye información personal, saldo y juegos comprados.
+- **index.html**: Página principal que muestra la tienda de juegos.
+- **registro.html**: Página de registro para nuevos usuarios.
+- **carrito.html**: Página donde los usuarios pueden ver los juegos agregados al carrito y confirmar su compra.
+- **misJuegos.html**: Página que muestra la lista de juegos comprados, con acceso a cada juego.
+- **usuario.html**: Perfil del usuario donde pueden editar su información y agregar saldo.
+
+### Scripts
+
+- **auth.js**: Maneja el registro, inicio de sesión, verificación de autenticación y funciones de acceso restringido.
+- **carrito.js**: Controla la lógica del carrito de compras, incluyendo el contador de juegos en el carrito, eliminar y vaciar el carrito, y confirmar la compra.
+- **misJuegos.js**: Gestiona la visualización y el acceso a los juegos comprados por el usuario.
+- **inicializacion.js**: Carga y configura los datos iniciales en `localStorage` para usuarios y juegos.
+- **script.js**: Contiene funciones generales, como la generación de las tarjetas de juegos y el manejo de eventos.
+- **usuario.js**: Permite al usuario modificar su perfil y saldo.
+
+### Modelos de Clases
+
+- **Usuarios.js**: Define la estructura del usuario, incluyendo métodos para gestionar su saldo, información personal y juegos comprados.
+- **Login.js**: Modelo para la gestión de datos de inicio de sesión.
+- **Juegos.js**: Modelo para los juegos, gestionando atributos como nombre, descripción, género, precio, y métodos para obtener su información.
 
 ## Cómo Usar
 
-1. Abre el archivo `index.html` en un navegador.
-2. Sigue las indicaciones del menú principal para registrarte o iniciar sesión.
-3. Explora los juegos disponibles y realiza compras si tienes saldo suficiente.
-
-¡Disfruta de la experiencia retro!
+1. **Inicio**: Abre el archivo `index.html` en un navegador para acceder a la tienda de juegos.
+2. **Registro e Inicio de Sesión**: Si eres nuevo, ve a la página de registro para crear una cuenta. Luego, inicia sesión para acceder a todas las funciones.
+3. **Explorar y Agregar Juegos**: Explora los juegos en la tienda y agrégalos al carrito de compras.
+4. **Carrito de Compras**: Visualiza y confirma tu compra si tienes saldo suficiente. También puedes eliminar juegos del carrito antes de confirmar.
+5. **Perfil y Saldo**: Accede a tu perfil para agregar saldo y editar tus datos. Podrás usar el saldo para adquirir juegos.
