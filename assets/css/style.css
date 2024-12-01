@@ -244,7 +244,7 @@ body {
   background: radial-gradient(circle, rgba(253, 184, 19, 1) 0%, rgba(253, 184, 19, 0.8) 50%, rgba(253, 184, 19, 0) 90%);
   border-radius: 50%;
   z-index: -1;
-  animation: moveSun 30s linear infinite; /* Movimiento cíclico más rápido */
+  animation: moveSun 25s linear infinite; /* Movimiento cíclico más rápido */
   box-shadow: 0 0 20px rgba(253, 184, 19, 1), 0 0 40px rgba(253, 184, 19, 0.8), 0 0 80px rgba(253, 184, 19, 0.5);
 }
 
@@ -270,7 +270,7 @@ body {
   background: radial-gradient(circle, rgba(192, 192, 192, 1) 0%, rgba(192, 192, 192, 0.8) 50%, rgba(192, 192, 192, 0) 90%);
   border-radius: 50%;
   z-index: -1;
-  animation: moveSun 30s linear infinite; /* Movimiento cíclico más rápido */
+  animation: moveSun 25s linear infinite; /* Movimiento cíclico más rápido */
   box-shadow: 5px 0 10px 3px rgba(229, 229, 229, 0.3),
   0 0 10px 2px rgba(229, 229, 229, 0.3),
   5px 0 10px 2px rgba(229, 229, 229, 0.3),
