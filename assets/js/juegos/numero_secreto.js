@@ -1,39 +1,46 @@
-function numeroAleatorio(min, max) {
-  return Math.round(Math.random() * (max - min) + min);
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const btnAdivinar = document.getElementById("btnAdivinar");
+  const inputNumero = document.getElementById("numeroUsuario");
+  const resultado = document.getElementById("resultado");
+  const intentosDisplay = document.getElementById("intentos");
 
+  const numeroCorrecto = numeroAleatorio(1, 10);  
+  let intentos = 0;
 
-/**
- * JUEGO ADIVINAR EL NUMERO SECRETO
- */
-function numberSecret() {
-    let numero_secreto = numeroAleatorio(1, 10); 
-    let intentosUsuarios = 0; 
-    let jugadorNumero = 0; 
-  
-    
-    while (jugadorNumero !== numero_secreto) {
-      intentosUsuarios++;
-      jugadorNumero = parseInt(prompt("Introduce un número del 1 al 10"),10);
-  
-   
-      if (isNaN(jugadorNumero)) {
-        alert("Por favor introduce un número válido.");
-        continue;
+  btnAdivinar.addEventListener("click", () => {
+      const numeroUsuario = parseInt(inputNumero.value);
+
+      if (isNaN(numeroUsuario) || numeroUsuario < 1 || numeroUsuario > 10) {
+          Swal.fire({
+              title: "Número inválido",
+              text: "Por favor, ingresa un número entre 1 y 10.",
+              icon: "error",
+              confirmButtonText: "Entendido"
+          });
+          return;
       }
-  
-      if (jugadorNumero === numero_secreto) {
-        alert("¡Ganaste!🎉");
-        break;
-      } else if (jugadorNumero > numero_secreto) {
-        alert("Más bajo 👇");
-      } else if (jugadorNumero < numero_secreto) {
-        alert("Más alto 👆");
+
+      intentos++;
+      if (numeroUsuario === numeroCorrecto) {
+          Swal.fire({
+              title: "¡Felicidades! 🎉",
+              text: `Adivinaste el número en ${intentos} intentos.`,
+              icon: "success",
+              confirmButtonText: "Jugar de nuevo"
+          }).then(() => {
+              location.reload();  
+          });
+      } else if (numeroUsuario < numeroCorrecto) {
+          resultado.textContent = "El número es mayor.";
+      } else {
+          resultado.textContent = "El número es menor.";
       }
-  
-      if (intentosUsuarios === 3) {
-        alert("Perdiste ❌, se acabaron los intentos.\nEl número era: " + numero_secreto);
-        break;
-      }
-    }
+
+      intentosDisplay.textContent = `Intentos: ${intentos}`;
+      inputNumero.value = "";  
+  });
+
+  function numeroAleatorio(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+});

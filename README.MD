@@ -13,10 +13,8 @@ Bienvenido al proyecto **Es Tim**, una tienda de juegos retro en línea donde lo
 
 ## Mejoras y Funcionalidades Futuras
 
-- **Historial de Compras**: Se añadirá un historial de compras para que los usuarios puedan ver sus transacciones anteriores y detalles de las compras realizadas.
-- **Restricción de Compra de Juegos Duplicados**: Se implementará una verificación para que los usuarios no puedan comprar el mismo juego más de una vez.
-- **Sistema de Puntaje**: Los usuarios podrán acumular puntos al realizar compras, los cuales podrán canjear en el futuro por beneficios adicionales.
-- **Juegos Gráficos Mejorados**: Los juegos contarán con una interfaz gráfica dentro de su propia página, mejorando la experiencia de juego.
+- **Historial de Compras**: Se añadirá un historial de compras para que los usuarios puedan ver sus transacciones anteriores y detalles de las compras realizadas. 
+- **Sistema de Puntaje**: Los usuarios podrán acumular puntos al realizar compras, los cuales podrán canjear en el futuro por beneficios adicionales. 
 - **Estadísticas de Juego**: Cada juego permitirá a los usuarios ver y comparar sus puntajes o tiempos de juego, añadiendo un aspecto de competencia.
 
 ## Estructura de Archivos
@@ -25,7 +23,7 @@ Bienvenido al proyecto **Es Tim**, una tienda de juegos retro en línea donde lo
 - **registro.html**: Página de registro para nuevos usuarios.
 - **carrito.html**: Página donde los usuarios pueden ver los juegos agregados al carrito y confirmar su compra.
 - **misJuegos.html**: Página que muestra la lista de juegos comprados, con acceso a cada juego.
-- **usuario.html**: Perfil del usuario donde pueden editar su información y agregar saldo.
+- **datosPersonales.html**: Perfil del usuario donde pueden editar su información y agregar saldo.
 
 ### Scripts
 

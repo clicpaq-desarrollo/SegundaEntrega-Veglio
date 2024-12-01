@@ -1,59 +1,124 @@
-
-
-function matematicas() {
-    let aciertos = 0;  
+document.addEventListener("DOMContentLoaded", () => {
+    const btnResponder = document.getElementById("btnResponder");
+    const btnIniciar = document.getElementById("btnIniciar");
+    const inputRespuesta = document.getElementById("respuestaUsuario");
+    const operacionTexto = document.getElementById("operacion");
+    const timerDisplay = document.getElementById("timer");
+    const puntajeDisplay = document.getElementById("puntaje");
   
-    for (let i = 0; i < 3; i++) {
-      
-      let pregunta = numeroAleatorio(1, 7);
-      let respuestaCorrecta;
-      let respuestaUsuario;
+    let puntaje = 0;
+    let tiempoRestante = 30;
+    let operacionActual;
+    let intervaloTiempo = null;
   
-      switch (pregunta) {
-        case 1:
-          respuestaCorrecta = 5 + 3;  
-          respuestaUsuario = parseInt(prompt("¿Cuánto es 5 + 3?"));
-          break;
-        case 2:
-          respuestaCorrecta = 12 - 7;  
-          respuestaUsuario = parseInt(prompt("¿Cuánto es 12 - 7?"));
-          break;
-        case 3:
-          respuestaCorrecta = 6 * 2;  
-          respuestaUsuario = parseInt(prompt("¿Cuánto es 6 * 2?"));
-          break;
-        case 4:
-          respuestaCorrecta = 16 / 4;  
-          respuestaUsuario = parseInt(prompt("¿Cuánto es 16 / 4?"));
-          break;
-        case 5:
-          respuestaCorrecta = 9 + 6;  
-          respuestaUsuario = parseInt(prompt("¿Cuánto es 9 + 6?"));
-          break;
-        case 6:
-          respuestaCorrecta = 10 - 3;  
-          respuestaUsuario = parseInt(prompt("¿Cuánto es 10 - 3?"));
-          break;
-        case 7:
-          respuestaCorrecta = 8 * 3;  
-          respuestaUsuario = parseInt(prompt("¿Cuánto es 8 * 3?"));
-          break;
-      }
+    const operaciones = ["+", "-", "*"];
   
-      
-      if (respuestaUsuario === respuestaCorrecta) {
-        alert("¡Correcto! 🎉");
-        aciertos++;
+    function iniciarJuego() {
+      puntaje = 0;
+      tiempoRestante = 30;
+  
+      puntajeDisplay.textContent = `Puntaje: ${puntaje}`;
+      timerDisplay.textContent = `Tiempo restante: ${tiempoRestante}s`;
+      operacionTexto.textContent = "¡Resolvamos!";
+  
+      inputRespuesta.classList.remove("d-none");
+      btnResponder.classList.remove("d-none");
+      btnIniciar.classList.add("d-none");
+  
+      generarOperacion();
+      intervaloTiempo = setInterval(actualizarTiempo, 1000);  
+    }
+  
+    function generarOperacion() {
+      const num1 = numeroAleatorio(1, 10);
+      const num2 = numeroAleatorio(1, 10);
+      const operador = operaciones[numeroAleatorio(0, 2)];
+  
+      operacionActual = {
+        num1,
+        num2,
+        operador,
+        resultado: eval(`${num1} ${operador} ${num2}`)  
+      };
+  
+      operacionTexto.textContent = `${num1} ${operador} ${num2} = ?`;
+    }
+  
+    function actualizarTiempo() {
+      if (tiempoRestante > 0) {
+        tiempoRestante--;
+        timerDisplay.textContent = `Tiempo restante: ${tiempoRestante}s`;
       } else {
-        alert("¡Incorrecto! ❌ La respuesta correcta era: " + respuestaCorrecta);
-        break;  
+        clearInterval(intervaloTiempo);
+        finalizarJuego();
       }
     }
   
-    
-    if (aciertos === 3) {
-      alert("¡Felicidades! Respondiste bien las 3 preguntas y ganaste el juego. 🏆");
-    } else {
-      alert("¡Juego terminado! 😢 No lograste responder correctamente las 3 preguntas.");
+    function finalizarJuego() {
+      inputRespuesta.classList.add("d-none");
+      btnResponder.classList.add("d-none");
+      btnIniciar.classList.remove("d-none");
+  
+      Swal.fire({
+        title: "¡Tiempo agotado!",
+        text: `Tu puntaje final es: ${puntaje}`,
+        icon: "info",
+        confirmButtonText: "Jugar de nuevo"
+      }).then(() => {
+        btnIniciar.classList.remove("d-none");
+      });
     }
-  }
+  
+    function procesarRespuesta() {
+      const respuestaUsuario = parseInt(inputRespuesta.value);
+  
+      if (isNaN(respuestaUsuario)) {
+        Swal.fire({
+          title: "Respuesta inválida",
+          text: "Por favor, ingresa un número.",
+          icon: "error",
+          confirmButtonText: "Entendido"
+        });
+        return;
+      }
+  
+      if (respuestaUsuario === operacionActual.resultado) {
+        puntaje++;
+        puntajeDisplay.textContent = `Puntaje: ${puntaje}`;
+        Swal.fire({
+          title: "¡Correcto!",
+          text: "Has acertado.",
+          icon: "success",
+          timer: 1000,
+          showConfirmButton: false
+        });
+      } else {
+        Swal.fire({
+          title: "Incorrecto",
+          text: "Intenta con otra operación.",
+          icon: "error",
+          timer: 1000,
+          showConfirmButton: false
+        });
+      }
+  
+      inputRespuesta.value = "";  
+      inputRespuesta.focus();  
+      generarOperacion();  
+    }
+  
+    btnResponder.addEventListener("click", procesarRespuesta);
+  
+    inputRespuesta.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") {
+        procesarRespuesta();  
+      }
+    });
+  
+    btnIniciar.addEventListener("click", iniciarJuego);
+  
+    function numeroAleatorio(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+  });
+  

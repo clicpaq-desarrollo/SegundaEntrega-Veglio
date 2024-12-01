@@ -1,0 +1,57 @@
+body {
+    font-family: "Press Start 2P", cursive;
+  
+    background-color: #222;
+  }
+  .board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 300px;
+      margin: 20px auto;
+  }
+
+  .cell {
+      height: 100px;
+      font-size: 2.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(45deg, #333, #444);
+      color: #FFD700;
+      border: 3px solid #FFD700;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background 0.2s, transform 0.2s;
+  }
+
+  .cell:hover {
+      background: linear-gradient(45deg, #444, #555);
+      transform: scale(1.1);
+  }
+
+  .cell.taken {
+      cursor: not-allowed;
+  }
+
+  .winner {
+      background: linear-gradient(45deg, #FFD700, #FFA500);
+      color: #222;
+  }
+
+  .btn-retro {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      background: linear-gradient(45deg, #333, #444);
+      color: #FFD700;
+      text-shadow: 2px 2px #000;
+      border: 3px solid #FFD700;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+  }
+
+  .btn-retro:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #444, #555);
+  }

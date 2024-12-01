@@ -1,28 +1,23 @@
-//Clase Login que modela la entidad login
-
 class Login {
   constructor(user, pass) {
-    this.user = user;
-    this.pass = pass;
-    this.is_adm = false;
-    this.usuario = null;
+      this.user = user ? user.toLowerCase() : null; 
+      this.pass = pass || null; 
+      this.isAdmin = false; 
   }
 
   getUser() {
-    return this.user;
+      return this.user;
   }
 
   getPass() {
-    return this.pass;
+      return this.pass;
   }
 
-  setUsuario(usuario) {
-    this.usuario = usuario;
+  setAdmin(isAdmin) {
+      this.isAdmin = isAdmin;
   }
 
-  getCliente() {
-    return this.usuario;
+  isAdministrator() {
+      return this.isAdmin;
   }
- 
-
 }

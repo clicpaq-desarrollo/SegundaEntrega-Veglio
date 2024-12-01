@@ -1,64 +1,54 @@
- class Usuario {
+class Usuario {
   constructor(nombre, apellido, edad) {
-    this.nombre = nombre;
-    this.apellido = apellido;
-    this.edad = edad;
-    this.id = -1;
-    this.login = null;
-    this.dinero = 0;
-    this.juegosComprados = [];
+      this.id = Usuario.generateId();
+      this.nombre = nombre;
+      this.apellido = apellido;
+      this.edad = edad;
+      this.dinero = 0;
+      this.juegosComprados = [];
+      this.login = null; 
   }
 
-  setId(nuevo_id) {
-    this.id = nuevo_id;
-  }
-
-  getNombreCompleto() {
-    return this.nombre + " " + this.apellido;
-  }
-
-  getEdad() {
-    return this.edad;
+  static generateId() {
+      const idCounter = parseInt(localStorage.getItem("userIdCounter")) || 1;
+      localStorage.setItem("userIdCounter", idCounter + 1);
+      return idCounter;
   }
 
   setLogin(user, pass) {
-    this.login = new Login(user, pass);
-    this.login.setUsuario(this);
+      this.login = new Login(user, pass);
   }
 
-  getLogin() {
-    return this.login;
+  getNombreCompleto() {
+      return `${this.nombre} ${this.apellido}`;
   }
 
-  getDinero() {
-    return this.dinero;
-  }
-
-  setDinero(dinero) {
-    this.dinero = dinero;
-  }
-
-  getJuegosComprados() {
-    return this.juegosComprados;
-  }
-
-  setJuegosComprados(juego) {
-    this.juegosComprados.push(juego);
-  }
-
-   debitar(monto) {
-    if (monto > 0 && this.dinero >= monto) {
-      this.dinero -= monto;
-      return true;
-    }
-    return false;
-  }
-
-  getId() {
-    return this.id;
+  comprarJuego(juego) {
+      if (this.dinero >= juego.precio && !this.tieneJuego(juego)) {
+          this.dinero -= juego.precio;
+          this.juegosComprados.push(juego);
+          return true;
+      }
+      return false;
   }
 
   tieneJuego(juego) {
-    return this.juegosComprados.find((j) => j.getId() === juego.getId());
+      return this.juegosComprados.some((j) => j.id === juego.id);
+  }
+
+  setDinero(monto) {
+      this.dinero = monto;
+  }
+
+  getDinero() {
+      return this.dinero;
+  }
+
+  debitar(monto) {
+      if (monto > 0 && this.dinero >= monto) {
+          this.dinero -= monto;
+          return true;
+      }
+      return false;
   }
 }

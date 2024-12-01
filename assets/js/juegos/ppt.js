@@ -2,42 +2,53 @@
 /**
  * JUEGO PIEDRA PAPEL TIJERA
  */
-function ppt() {
-    let piedra = 1;
-    let papel = 2;
-    let tijera = 3;
-    
-    let eleccionIA = numeroAleatorio(1, 3);
-    console.log("La computadora eligió: " + eleccionIA);
-    let eleccionUsuario = parseInt(prompt(
-      "Elige una opción(número):\n 1: Piedra 🗿\n 2: Papel 📃\n 3: Tijera ✂"
-    ));
-  
-    
-    while (isNaN(eleccionUsuario) || eleccionUsuario < 1 || eleccionUsuario > 3) {
-      alert("Opción inválida. Por favor, elige un número entre 1 y 3.");
-      eleccionUsuario = parseInt(prompt("Elige una opción(numero):\n 1: Piedra 🗿\n 2: Papel 📃\n 3: Tijera ✂"));
-    }
-  
-      
-      let eleccionIATexto = "";
-      if (eleccionIA === piedra) {
-        eleccionIATexto = "Piedra 🗿";
-      } else if (eleccionIA === papel) {
-        eleccionIATexto = "Papel 📃";
-      } else if (eleccionIA === tijera) {
-        eleccionIATexto = "Tijera ✂";
-      }
-  
-    if (
-      (eleccionUsuario == piedra && eleccionIA == tijera) ||
-      (eleccionUsuario == papel && eleccionIA == piedra) ||
-      (eleccionUsuario == tijera && eleccionIA == papel)
-    ) {
-      alert("¡Ganaste! 🎉\n La computadora eligió: " + eleccionIATexto);
-    } else if (eleccionUsuario === eleccionIA) {
-      alert("¡Empate!\n La computadora eligió: " + eleccionIATexto);
-    } else {
-      alert("¡Perdiste! ❌\n La computadora eligió: " + eleccionIATexto);
-    }
+function numeroAleatorio(min, max) {
+  return Math.round(Math.random() * (max - min) + min);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btnPiedra = document.getElementById("btnPiedra");
+  const btnPapel = document.getElementById("btnPapel");
+  const btnTijera = document.getElementById("btnTijera");
+
+  btnPiedra.addEventListener("click", () => jugarPPT(1)); // Piedra 🗿
+  btnPapel.addEventListener("click", () => jugarPPT(2));  // Papel 📃
+  btnTijera.addEventListener("click", () => jugarPPT(3)); // Tijera ✂
+});
+
+function jugarPPT(eleccionUsuario) {
+  const piedra = 1, papel = 2, tijera = 3;
+  const opciones = ["Piedra 🗿", "Papel 📃", "Tijera ✂"];
+  const eleccionIA = numeroAleatorio(1, 3);
+
+  let resultado;
+  if (
+      (eleccionUsuario === piedra && eleccionIA === tijera) ||
+      (eleccionUsuario === papel && eleccionIA === piedra) ||
+      (eleccionUsuario === tijera && eleccionIA === papel)
+  ) {
+      resultado = "win";
+  } else if (eleccionUsuario === eleccionIA) {
+      resultado = "draw";
+  } else {
+      resultado = "lose";
   }
+
+  const mensajes = {
+      win: { title: "¡Ganaste! 🎉", icon: "success" },
+      draw: { title: "¡Empate!", icon: "info" },
+      lose: { title: "¡Perdiste! ❌", icon: "error" }
+  };
+
+  Swal.fire({
+      title: mensajes[resultado].title,
+      text: `La computadora eligió: ${opciones[eleccionIA - 1]}`,
+      icon: mensajes[resultado].icon,
+      confirmButtonText: "Aceptar",
+      backdrop: `
+          rgba(0,0,0,0.8) 
+          left top
+          no-repeat
+      `
+  });
+}

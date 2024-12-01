@@ -1,22 +1,16 @@
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-html {
-  background: url("../images/fdo1.webp");
-  background-size: contain;
-  background-attachment: fixed;
+nav{
+  z-index: 999;
 }
-
+/* Fondo y diseño general */
 body {
   background: transparent;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family:monospace ;
 }
 
 .press-start-2p-regular {
@@ -25,56 +19,19 @@ body {
   font-style: normal;
 }
 
-.card {
-  display: flex;
-  font-family: monospace;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 3px solid rgb(174, 218, 80);
-  border-radius: 15px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  height: 100%;
-  background: #3a2769b8;
-  color: rgb(174, 218, 80);
-  ;
+.bg-old-blue {
+  background: url("../images/fdo1.webp") !important;
+  background-size: contain !important;
+  background-attachment: fixed !important;
 }
 
-.card-body {
-  background: transparent;
-  flex-grow: 1;
-  /* Ocupa el espacio restante */
-}
-
-.card-footer {
-  background: transparent;
-  text-align: center;
-  margin-top: auto;
-  /* Empuja el footer hacia el final */
-}
-
-
-.card-img-top {
-  height: 200px;
-  width: 100%;
-  border-radius: 10px 10px 0 0;
+.bg-home {
+  background: url("../images/tiendade-conveniencia-8-bits-de-japon-4wk0er43wg1dth44.webp") !important;
+  background-size: cover !important;
 }
 
 .bg-azul {
   background-color: #3a2769;
-}
-
-.neon {
-  color: #fff;
-  text-shadow:
-    0 0 5px rgba(0, 178, 255, 1),
-    0 0 10px rgba(0, 178, 255, 1),
-    0 0 20px rgba(0, 178, 255, 1),
-    0 0 40px rgba(38, 104, 127, 1),
-    0 0 80px rgba(38, 104, 127, 1),
-    0 0 90px rgba(38, 104, 127, 1),
-    0 0 100px rgba(38, 104, 127, 1),
-    0 0 140px rgba(38, 104, 127, 1),
-    0 0 180px rgba(38, 104, 127, 1);
 }
 
 .overlay {
@@ -96,15 +53,6 @@ body {
 .content h1 {
   font-size: 2.5rem;
 }
- 
-.bg-home { 
-  background:url("../images/tiendade-conveniencia-8-bits-de-japon-4wk0er43wg1dth44.webp") !important; 
-  background-size: cover!important;
-}
-
-.w-15{
-  width: 15%;
-}
 
 .modal-header {
   background: #536493;
@@ -117,6 +65,423 @@ body {
 }
 
 .modal-body {
-  background: #FFF1DB;
+  background: #fff1db;
 }
 
+
+
+
+/* Cartas y elementos */
+.card {
+  display: flex;
+  font-family: monospace;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 3px solid rgb(174, 218, 80);
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
+  background: #3a2769b8;
+  color: rgb(174, 218, 80);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  background: transparent;
+  flex-grow: 1;
+}
+
+.card-footer {
+  background: transparent;
+  text-align: center;
+  margin-top: auto;
+}
+
+.card-img-top {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+.w-15 {
+  width: 15% !important;
+}
+/* Imagen del creador */
+#img_creador {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 400px;
+  height: 400px;
+}
+
+/* Globo de conversación */
+.speech-bubble {
+  background-color: #f5f5f5;
+  color: #333;
+  padding: 15px;
+  border-radius: 15px;
+  max-width: 300px;
+  position: relative; 
+  font-size: 16px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: 100px;
+  left: -50px;
+  transform: rotate(90deg);
+  border-width: 48px 28px 0;
+  border-style: solid;
+  border-color: #f5f5f5 transparent;
+}
+
+/* Texto en el globo */
+.speech-bubble p {
+  margin: 0;
+  text-align: center;
+}
+
+/* Spinner para el clima */
+.spinner-border {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  border-width: 0.3rem;
+}
+
+/* Neon */
+.neon {
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0, 178, 255, 1), 0 0 10px rgba(0, 178, 255, 1),
+    0 0 20px rgba(0, 178, 255, 1), 0 0 40px rgba(38, 104, 127, 1),
+    0 0 80px rgba(38, 104, 127, 1);
+}
+
+/* Clima */
+#weather-container {
+  text-align: center;
+  color: #fff;
+  z-index: 1;
+}
+
+#clima-efectos {
+  position: absolute; 
+  
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; 
+  height: 100%;
+  overflow: hidden; 
+  z-index: 2; 
+  
+}
+
+
+#weather-container img {
+  margin-top: 10px;
+  width: 64px;
+  height: 64px;
+}
+/* Contenedor para lluvia */
+.rain {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+/* Estilos base para las gotas */
+.rain .raindrop {
+  position: absolute;
+  background: #4a90e2;
+  border-radius: 50%;
+  width: 2px;
+  height: 15px;
+  animation: fall linear infinite;
+  opacity: 0.7;
+}
+
+/* Variación en tamaño y velocidad */
+.rain .raindrop:nth-child(odd) {
+  width: 2px;
+  height: 20px;
+  animation-duration: 2s; /* Velocidad más lenta */
+}
+
+.rain .raindrop:nth-child(even) {
+  width: 3px;
+  height: 10px;
+  animation-duration: 1.5s; /* Velocidad más rápida */
+}
+
+/* Animación de caída vertical */
+@keyframes fall {
+  0% {
+    top: -50px;
+    opacity: 0.8;
+  }
+  100% {
+    top: 100vh;
+    opacity: 0;
+  }
+}
+
+/* Sol */
+.sun {
+  position: absolute;
+  top: 10%;
+  left: 70%; /* Comienza más hacia la derecha */
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(253, 184, 19, 1) 0%, rgba(253, 184, 19, 0.8) 50%, rgba(253, 184, 19, 0) 90%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: moveSun 30s linear infinite; /* Movimiento cíclico más rápido */
+  box-shadow: 0 0 20px rgba(253, 184, 19, 1), 0 0 40px rgba(253, 184, 19, 0.8), 0 0 80px rgba(253, 184, 19, 0.5);
+}
+
+@keyframes moveSun {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-20px, -20px); /* Pequeño desplazamiento hacia arriba y la izquierda */
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Estilo de la Luna */
+.moon {
+  position: absolute;
+  top: 10%;
+  left: 70%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(192, 192, 192, 1) 0%, rgba(192, 192, 192, 0.8) 50%, rgba(192, 192, 192, 0) 90%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: moveSun 30s linear infinite; /* Movimiento cíclico más rápido */
+  box-shadow: 5px 0 10px 3px rgba(229, 229, 229, 0.3),
+  0 0 10px 2px rgba(229, 229, 229, 0.3),
+  5px 0 10px 2px rgba(229, 229, 229, 0.3),
+  0 0 3px 2px rgba(229, 229, 229, 0.3); }
+ 
+.moon::after{
+  content: ''; 
+  background: radial-gradient(circle, rgba(192, 192, 192, 1) 0%, rgba(192, 192, 192, 0.8) 50%, rgba(192, 192, 192, 0) 90%);
+
+  display: block;
+  position: absolute;
+  left: 70px;
+  top: 50px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 3px 0 0 1px rgba(98, 98, 98, 0.51),
+  7px 45px 0 -5px rgba(162, 162, 162, 0.9),
+  9px 45px 0 -5px rgba(100, 100, 100, 0.51),
+  35px 20px 0 -10px rgba(162, 162, 162, 0.9),
+  37px 20px 0 -10px rgba(100, 100, 100, 0.51);
+}
+
+
+/* NUBES */
+.cloud {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: moveClouds 40s linear infinite;
+  pointer-events: none;
+  top: 0; /* Ajustado dinámicamente */
+  left: -150%; /* Comienza fuera del área visible */
+}
+
+
+
+
+.cloud .cloud-part {
+  position: absolute;
+  background: #f5f5f5;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.cloud .cloud-part:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  left: 5%;
+  top: 10%;
+}
+
+.cloud .cloud-part:nth-child(2) {
+  width: 120px;
+  height: 120px;
+  left: 50%;
+  top: 0%;
+}
+
+.cloud .cloud-part:nth-child(3) {
+  width: 90px;
+  height: 90px;
+  left: 85%;
+  top: 20%;
+  opacity: 0.6;
+}
+
+.cloud .cloud-part:nth-child(4) {
+  width: 100px;
+  height: 100px;
+  left: 35%;
+  top: 40%;
+  opacity: 0.8;
+}
+
+@keyframes moveClouds {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+.cloud {
+  animation: moveClouds 40s linear infinite;
+}
+
+
+ 
+ 
+#clouds{
+	padding: 100px 0; 
+}
+
+/*Time to finalise the cloud shape*/
+.cloud {
+	width: 200px; height: 60px;
+	background: #fff;
+	
+	border-radius: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+	
+	position: relative; 
+}
+
+.cloud:before, .cloud:after {
+	content: '';
+	position: absolute; 
+	background: #fff;
+	width: 100px; height: 80px;
+	position: absolute; top: -15px; left: 10px;
+	
+	border-radius: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+	
+	-webkit-transform: rotate(30deg);
+	transform: rotate(30deg);
+	-moz-transform: rotate(30deg);
+}
+
+.cloud:after {
+	width: 120px; height: 120px;
+	top: -55px; left: auto; right: 15px;
+}
+
+ 
+.x1 {
+	animation: moveclouds 25s linear infinite;
+	-webkit-animation: moveclouds 25s linear infinite;
+	-moz-animation: moveclouds 25s linear infinite;
+	-o-animation: moveclouds 25s linear infinite;
+}
+
+ .x2 {
+	left: 200px;
+	
+	-webkit-transform: scale(0.6);
+	-moz-transform: scale(0.6);
+	transform: scale(0.6);
+	opacity: 0.6; 
+	
+ 	animation: moveclouds 35s linear infinite;
+	-webkit-animation: moveclouds 35s linear infinite;
+	-moz-animation: moveclouds 35s linear infinite;
+	-o-animation: moveclouds 35s linear infinite;
+}
+
+.x3 {
+	left: -250px; top: -200px;
+	
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	transform: scale(0.8);
+	opacity: 0.8; 
+	animation: moveclouds 29s linear infinite;
+	-webkit-animation: moveclouds 29s linear infinite;
+	-moz-animation: moveclouds 29s linear infinite;
+	-o-animation: moveclouds 29s linear infinite;
+}
+
+.x4 {
+	left: 470px; top: -250px;
+	
+	-webkit-transform: scale(0.75);
+	-moz-transform: scale(0.75);
+	transform: scale(0.75);
+	opacity: 0.75; 
+	animation: moveclouds 20s linear infinite;
+	-webkit-animation: moveclouds 20s linear infinite;
+	-moz-animation: moveclouds 20s linear infinite;
+	-o-animation: moveclouds 20s linear infinite;
+}
+
+.x5 {
+	left: -150px; top: -150px;
+	
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	transform: scale(0.8);
+	opacity: 0.8; /*opacity proportional to the size*/
+	animation: moveclouds 40s linear infinite;
+	-webkit-animation: moveclouds 40s linear infinite;
+	-moz-animation: moveclouds 40s linear infinite;
+	-o-animation: moveclouds 40s linear infinite;
+}
+
+@keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+@keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+@keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+@-webkit-keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+@-moz-keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}
+@-o-keyframes moveclouds {
+	0% {margin-left: 1000px;}
+	100% {margin-left: -1000px;}
+}

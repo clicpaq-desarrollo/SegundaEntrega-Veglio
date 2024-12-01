@@ -1,0 +1,72 @@
+/* styles.css */
+body {
+     font-family: "Press Start 2P", cursive;
+    background-color: #222;
+    text-align: center;
+     color: white;
+  }
+ 
+  
+  #tablero {
+    display: grid;
+    grid-template-columns: repeat(2, 150px);
+    grid-template-rows: repeat(2, 150px);
+    gap: 20px;
+    justify-content: center;
+    margin: 20px auto;
+  }
+  
+  .boton {
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0.9;
+  }
+  .boton { 
+    border-radius: 50%;
+    opacity: 0.9;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .rojo {
+    background-color: red;
+    border-radius: 100% 0 0 0 ;
+  }
+  .verde {
+    background-color: green;
+    border-radius: 0 100% 0 0;
+  }
+  .azul {
+    background-color: blue;
+    border-radius: 0 0 0 100%;
+}
+.amarillo {
+    background-color: yellow;
+    border-radius:  0 0 100% 0 ;
+  }
+  
+   .boton.activo {
+    transform: scale(1.2); /* Aumentar el tamaño */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Brillo */
+    opacity: 1;
+  }
+  
+  
+  .boton:active {
+    opacity: 1;
+  }
+  
+  #btnIniciar {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #61dafb;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #btnIniciar:hover {
+    background-color: #21a1f1;
+  }
+  

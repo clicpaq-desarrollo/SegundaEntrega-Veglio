@@ -1,0 +1,37 @@
+body {
+  font-family: 'Press Start 2P', cursive;
+  
+  background-color: #222;
+}
+
+ .eleccionJugador {
+  font-size: 4rem;
+  cursor: pointer;
+  padding: 25px 25px;
+  border: 3px solid #ffd700;
+  background: linear-gradient(45deg, #333, #444);
+  color: #ffd700;
+  text-shadow: 2px 2px #000;
+  border-radius: 10px;
+  margin: 5px;
+  display: inline-block;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.eleccionJugador:hover {
+  transform: scale(1.1);
+  background: linear-gradient(45deg, #444, #555);
+}
+
+.ctn_jugador {
+  background-color: #222;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+}
+
+#resultadoPPT {
+  color: #ffd700;
+  text-shadow: 2px 2px #000;
+  font-size: 1.5rem;
+} 
